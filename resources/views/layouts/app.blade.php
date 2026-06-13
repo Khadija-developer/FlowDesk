@@ -93,9 +93,12 @@
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <i class="bi bi-speedometer2"></i> Dashboard
             </a>
-            <a href="#" class="nav-link">
+            {{-- <a href="#" class="nav-link">
                 <i class="bi bi-people"></i> Clients
-            </a>
+            </a> --}}
+            <a href="{{ route('clients.index') }}" class="nav-link {{ request()->routeIs('clients*') ? 'active' : '' }}">
+    <i class="bi bi-people"></i> Clients
+</a>
             <a href="#" class="nav-link">
                 <i class="bi bi-folder"></i> Projects
             </a>

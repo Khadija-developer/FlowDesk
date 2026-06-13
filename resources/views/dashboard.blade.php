@@ -17,7 +17,8 @@ Manage your clients, projects and invoices from one place.
                     </div>
                     <div>
                         <div class="text-muted" style="font-size:13px;">Total Clients</div>
-                        <div class="fw-bold fs-4">0</div>
+                        {{-- <div class="fw-bold fs-4">0</div> --}}
+                        <div class="fw-bold fs-4">{{ $totalClients }}</div>
                     </div>
                 </div>
             </div>

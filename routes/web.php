@@ -7,8 +7,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $totalClients = \App\Models\Client::where('user_id', auth()->id())->count();
+    
+    return view('dashboard', compact('totalClients'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

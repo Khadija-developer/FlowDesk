@@ -55,8 +55,9 @@ class ClientController extends Controller
     // Show single client
     public function show(Client $client)
     {
-        $this->authorizeClient($client);
-        return view('clients.show', compact('client'));
+        // $this->authorizeClient($client);
+        // return view('clients.show', compact('client'));
+         abort(404);
     }
 
     // Show edit form
@@ -71,7 +72,7 @@ class ClientController extends Controller
     {
         $this->authorizeClient($client);
 
-        $request->validate([
+       $validated = $request->validate([
             'company_name'   => 'required|string|max:255',
             'contact_person' => 'required|string|max:255',
             'email'          => 'nullable|email|max:255',
@@ -81,7 +82,7 @@ class ClientController extends Controller
             'notes'          => 'nullable|string',
         ]);
 
-        $client->update($request->all());
+        $client->update($validated);
 
         return redirect()->route('clients.index')
                         ->with('success', 'Client updated successfully!');
